@@ -29,7 +29,7 @@ const User = (props) => {
     getUser();
   }, [state]);
 
-  console.log("Len", state.cart.length);
+  console.log("Len", state.length);
   const path = "http://localhost:5000/uploads/";
   return (
     <>

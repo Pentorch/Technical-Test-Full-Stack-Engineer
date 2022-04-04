@@ -50,9 +50,6 @@ const Routes = () => {
           type: "USER_SUCCESS",
           payload,
         });
-        dispatch({
-          type: "UPDATE_CART",
-        });
       } catch (error) {
         console.log(error);
       }

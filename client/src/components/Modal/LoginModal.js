@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+
 import { AppContext } from "../../context/AppContext";
 import { API } from "../../config/server";
 import Swal from "sweetalert2";
@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 const LoginModal = (props) => {
   const { handleClose, show, regis } = props;
   const [state, dispatch] = useContext(AppContext);
-  const router = useHistory();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -38,12 +37,8 @@ const LoginModal = (props) => {
         type: "LOGIN_SUCCESS",
         payload: response.data.data,
       });
-      dispatch({
-        type: "UPDATE_CART",
-      });
-      if (response.data.data.role === "Administrator") {
+      if (response.data.data) {
         handleClose();
-        router.push("/transaction");
       } else {
         handleClose();
         window.location.reload();
